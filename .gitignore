@@ -1,0 +1,9 @@
+config.toml
+*.html
+*.exe
+*.pdf
+wkhtmltopdf-bin/*
+*.log
+*.aux
+*.tex
+dotgo

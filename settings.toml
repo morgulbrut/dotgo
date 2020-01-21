@@ -1,0 +1,116 @@
+[paths]
+xelatex = ""
+pandoc = ""
+wkhtmltopdf = ""
+
+[[files]]
+type="md2revealjs"
+converter="pandoc"
+infile="README.md"
+outfile="slides.html"
+
+[[files]]
+type="md2html"
+infile="README.md"
+outfile="readme.html"
+converter="golang-commonmark"
+
+[[files]]
+type="md2pdf"
+infile="README.md"
+outfile="readme_wk.pdf"
+converter="wkhtmltopdf"
+
+[[files]]
+title="DoTGo"
+subtitle="Document Translator in Go"
+author="morgulbrut"
+date="\\today"
+keywords=["documents", "go", "pandoc", "wkhtlmtox", "xelatex"]
+abstract="At some point Dotgo should make it easy to write beautiful documents.\nThis will then be it's manual"
+type="md2pdf"
+infile="README.md"
+outfile="readme_pandoc_xelatex.pdf"
+pdfengine="xelatex" # pdflatex, lualatex, xelatex, latexmk, tectonic, wkhtmltopdf, weasyprint, prince, context, and pdfroff
+converter="pandoc"
+toc=true
+numbered=true
+verbose=true
+codestyle="pygments" # pygments, kate, monochrome, espesso, haddock, zenburn, tango
+variables=[
+    "documentclass=scrartcl",
+    "fontsize=10pt",
+    "papersize=a4",
+    "lang=de",
+    "mainfont=Calibri.ttf"
+]
+
+[[files]]
+title="DoTGo"
+subtitle="Document Translator in Go"
+author="morgulbrut"
+date="\\today"
+keywords=["documents", "go", "pandoc", "wkhtlmtox", "xelatex"]
+abstract="At some point Dotgo should make it easy to write beautiful documents.\nThis will then be it's manual"
+type="md2pdf"
+infile="README.md"
+outfile="readme_pandoc_pdflatex.pdf"
+pdfengine="pdflatex"
+converter="pandoc"
+toc=true
+numbered=true
+verbose=true
+codestyle="pygments" # pygments, kate, monochrome, espesso, haddock, zenburn, tango
+variables=[
+    "documentclass=scrartcl",
+    "fontsize=10pt",
+    "papersize=a4",
+    "lang=de",
+    "mainfont=Calibri.ttf"
+]
+
+[[files]]
+title="DoTGo"
+subtitle="Document Translator in Go"
+author="morgulbrut"
+date="\\today"
+keywords=["documents", "go", "pandoc", "wkhtlmtox", "xelatex"]
+abstract="At some point Dotgo should make it easy to write beautiful documents.\nThis will then be it's manual"
+type="md2pdf"
+infile="README.md"
+outfile="readme_pandoc_latexmk.pdf"
+pdfengine="latexmk"
+converter="pandoc"
+toc=true
+numbered=true
+verbose=true
+codestyle="pygments" # pygments, kate, monochrome, espesso, haddock, zenburn, tango
+variables=[
+    "documentclass=scrartcl",
+    "fontsize=10pt",
+    "papersize=a4",
+    "lang=de",
+    "mainfont=Calibri.ttf"
+]
+
+[[files]]
+title="DoTGo"
+author="morgulbrut"
+subtitle="Document Translator in Go"
+date="\\today"
+keywords=["documents", "go", "pandoc", "wkhtlmtox", "xelatex"]
+abstract="At some point Dotgo should make it easy to write beautiful documents.\nThis will then be it's manual"
+type="md2latex"
+infile="README.md"
+outfile="readme_pandoc.tex"
+converter="pandoc"
+toc=true
+numbered=true
+verbose=true
+codestyle="pygments" # pygments, kate, monochrome, espesso, haddock, zenburn, tango
+variables=[
+    "documentclass=scrartcl",
+    "fontsize=10pt",
+    "papersize=a4",
+    "lang=de"
+]
