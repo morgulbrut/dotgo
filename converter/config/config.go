@@ -29,4 +29,5 @@ type File struct {
 	Verbose   bool
 	Codestyle string
 	Latex     bool
+	Header    string
 }

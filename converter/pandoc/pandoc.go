@@ -16,6 +16,10 @@ func addArguments(cf config.File) []string {
 		arguments = append(arguments, "--highlight-style")
 		arguments = append(arguments, cf.Codestyle)
 	}
+	if cf.Header != "" {
+		arguments = append(arguments, "-H")
+		arguments = append(arguments, cf.Header)
+	}
 	if cf.Numbered {
 		arguments = append(arguments, "-N")
 	}
