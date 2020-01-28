@@ -51,7 +51,7 @@ func addArguments(cf config.File) []string {
 
 func Beamer(cf config.File, c config.Config) {
 	colorlog.Info("[pandoc]: converting")
-	arguments := []string{"-s", cf.Infile, "-o", cf.Outfile, "--pdf-engine=xelatex", "-to=beamer"}
+	arguments := []string{"-t", "beamer", cf.Infile, "-o", cf.Outfile}
 	arguments = append(arguments, addArguments(cf)...)
 
 	colorlog.Info("[pandoc]: Arguments: %q", arguments)

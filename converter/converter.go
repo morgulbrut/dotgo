@@ -35,6 +35,9 @@ func Convert(c config.Config) {
 		if f.Type == "md2revealjs" && f.Converter == "pandoc" {
 			pandoc.Revealjs(f, c)
 		}
+		if f.Type == "beamer" && f.Converter == "pandoc" {
+			pandoc.Beamer(f, c)
+		}
 	}
 }
 
