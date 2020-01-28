@@ -1,7 +1,7 @@
 [paths]
 xelatex = ""
 pandoc = ""
-wkhtmltopdf = ""
+wkhtmltopdf = "bins/wkhtmltopdf.exe"
 
 [[files]]
 type="md2revealjs"
