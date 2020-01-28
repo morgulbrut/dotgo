@@ -15,6 +15,8 @@ const line string = "----------------------------------"
 
 func Convert(c config.Config) {
 	for _, f := range c.Files {
+		colorlog.Info("Deleting old %s", f.Outfile)
+		os.Remove(f.Outfile)
 		colorlog.Info("Converting %s to %s using %s", f.Infile, f.Outfile, f.Converter)
 		if f.Type == "md2pdf" && f.Converter == "wkhtmltopdf" {
 			md2html.Html(f)
