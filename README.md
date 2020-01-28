@@ -13,22 +13,19 @@ md => pdf:
 md => LaTeX:
 : using **pandoc**
 
-## Planned:
-
-md => html:
-: using **pandoc**
-
 md => beamer:
 : using **pandoc** and **XeLaTeX**
 
-md => htmlpresentation:
+md => reveal.js presentation:
 : using **pandoc**
 
 # Install and configuration
 ## Configuration
 ### Paths
 
-make a file named `config.toml` with the folloing content. And set the paths correctly, leave it empty for OS default
+Configuration is done with `settings.toml`. It basically has two parts.
+
+**paths** defines the paths for the tools it uses
 
 ```toml
 [paths]
@@ -36,9 +33,8 @@ pandoc=""
 xelatex=""     
 wkhtmltopdf="" 
 ```
-### Settings
 
-make a file named `settings.toml` to configure how the files get processed. Here's a example for this file.
+**files** defines the which file needs to processed in which way, as an example:
 
 ```toml
 [[files]]
@@ -69,7 +65,6 @@ variables=[
 ### Options
 
 Options for the settings file
-
 `title`
 : title of the generated pdf (when using **pandoc**).
 
@@ -89,7 +84,7 @@ Options for the settings file
 : abstract of the generated pdf (when using **pandoc**).
 
 `type`
-: type of conversion, can be one of: **md2html**, **md2pdf**, **md2latex**.
+: type of conversion, can be one of: **md2html**, **md2pdf**, **md2latex**, **md2beamer**, **md2revealjs**.
 
 `infile`
 : file name of the input file.
@@ -118,6 +113,13 @@ Options for the settings file
 `variables`
 : variables to pass on to pandoc (when using **pandoc**).
 
+`header`
+: path to a custom header file, will be passed to pandoc (when using **pandoc**).
+
+
+## Examples
+
+Check the settings.toml in this Repo
 
 # Markdown primer
 ## Sections
@@ -284,16 +286,16 @@ Some text to show that the reference links can follow later.
 Here's our logo (hover to see the title text):
 
 Inline-style: 
-![alt text](./examplepics/204.jpg "Logo Title Text 1")
+![alt text](examplepics\640px-Bing_Hoele_Flower.jpg "Logo Title Text 1")
 
 Reference-style: 
 ![alt text][logo]
 
-[logo]:  ./examplepics/204.jpg "Logo Title Text 2"
+[logo]:  examplepics\640px-Bing_Hoele_Flower.jpg "Logo Title Text 2"
 
 ```
 Inline-style: 
-![alt text](./examplepics/204.jpg "Logo Title Text 1")
+![alt text](examplepics\640px-Bing_Hoele_Flower.jpg "Logo Title Text 1")
 
 Reference-style: 
 ![alt text][logo]
@@ -360,4 +362,6 @@ Quote break.
 </dl>
 
 
-## Latex
+## LaTeX
+
+**Pandoc** markdown supports inline LaTeX, that will be executed when building with any LaTeX engine
