@@ -13,6 +13,7 @@ import (
 
 const line string = "----------------------------------"
 
+// Convert actually kicks of the conversation of the different files
 func Convert(c config.Config) {
 	for _, f := range c.Files {
 		colorlog.Info("Deleting old %s", f.Outfile)
@@ -37,6 +38,7 @@ func Convert(c config.Config) {
 	}
 }
 
+// ReadConfig reads the settings.toml file
 func ReadConfig() config.Config {
 	var conf config.Config
 	_, err := toml.DecodeFile("settings.toml", &conf)
