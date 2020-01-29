@@ -61,10 +61,11 @@ func Beamer(cf config.File, c config.Config) {
 
 	colorlog.Info("[pandoc]: Arguments: %q", arguments)
 	cmd := exec.Command("pandoc", arguments...)
-	_, err := cmd.Output()
+	st, err := cmd.Output()
 	if err != nil {
 		colorlog.Fatal(err.Error())
 	}
+	colorlog.Trace(string(st))
 }
 
 func Revealjs(cf config.File, c config.Config) {
