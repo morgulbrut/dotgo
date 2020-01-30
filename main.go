@@ -32,5 +32,5 @@ func logo() {
  ░                                         `
 
 	color256.PrintHiRed("%s", logo)
-	color256.PrintGreen("Document Translator in Go. Ver: %s, %s ", Version, Build)
+	color256.PrintGreen("Document Translator in Go. Ver: %s-%s ", Version, Build)
 }
