@@ -19,24 +19,22 @@ func Convert(c config.Config) {
 		colorlog.Info("Deleting old %s", f.Outfile)
 		os.Remove(f.Outfile)
 		colorlog.Info("Converting %s to %s using %s", f.Infile, f.Outfile, f.Converter)
-		if f.Type == "md2pdf" && f.Converter == "wkhtmltopdf" {
+		if f.Type == "pdf" && f.Converter == "wkhtmltopdf" {
 			md2html.Html(f)
 			wkhtmlto.Pdf(f, c)
 		}
-		if f.Type == "md2html" && f.Converter == "golang-commonmark" {
+		if f.Type == "html" && f.Converter == "golang-commonmark" {
 			md2html.Html(f)
 		}
-		if f.Type == "md2pdf" && f.Converter == "pandoc" {
-			pandoc.Pdf(f, c)
-		}
-		if f.Type == "md2latex" && f.Converter == "pandoc" {
-			pandoc.LaTeX(f, c)
-		}
-		if f.Type == "md2revealjs" && f.Converter == "pandoc" {
-			pandoc.Revealjs(f, c)
-		}
-		if f.Type == "md2beamer" && f.Converter == "pandoc" {
-			pandoc.Beamer(f, c)
+		if f.Converter == "pandoc" {
+
+			if f.Type == "pdf" {
+				pandoc.Pdf(f)
+			} else if f.Type == "beamer" {
+				pandoc.Beamer(f)
+			} else {
+				pandoc.Generic(f)
+			}
 		}
 	}
 }

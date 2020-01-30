@@ -4,19 +4,19 @@ pandoc = ""
 wkhtmltopdf = "bins/wkhtmltopdf.exe"
 
 [[files]]
-type="md2revealjs"
+type="revealjs"
 converter="pandoc"
 infile="README.md"
 outfile="slides.html"
 
 [[files]]
-type="md2html"
+type="html"
 infile="README.md"
 outfile="readme.html"
 converter="golang-commonmark"
 
 [[files]]
-type="md2pdf"
+type="pdf"
 infile="README.md"
 outfile="readme_wk.pdf"
 converter="wkhtmltopdf"
@@ -28,7 +28,7 @@ author="morgulbrut"
 date="\\today"
 keywords=["documents", "go", "pandoc", "wkhtlmtox", "xelatex"]
 abstract="At some point Dotgo should make it easy to write beautiful documents.\nThis will then be it's manual"
-type="md2pdf"
+type="pdf"
 infile="README.md"
 outfile="readme_pandoc_xelatex.pdf"
 pdfengine="xelatex" # pdflatex, lualatex, xelatex, latexmk, tectonic, wkhtmltopdf, weasyprint, prince, context, and pdfroff
@@ -52,7 +52,7 @@ author="morgulbrut"
 date="\\today"
 keywords=["documents", "go", "pandoc", "wkhtlmtox", "xelatex"]
 abstract="At some point Dotgo should make it easy to write beautiful documents.\nThis will then be it's manual"
-type="md2pdf"
+type="pdf"
 infile="README.md"
 outfile="readme_pandoc_pdflatex.pdf"
 pdfengine="pdflatex"
@@ -76,7 +76,7 @@ author="morgulbrut"
 date="\\today"
 keywords=["documents", "go", "pandoc", "wkhtlmtox", "xelatex"]
 abstract="At some point Dotgo should make it easy to write beautiful documents.\nThis will then be it's manual"
-type="md2pdf"
+type="pdf"
 infile="README.md"
 outfile="readme_pandoc_latexmk.pdf"
 pdfengine="latexmk"
@@ -100,7 +100,7 @@ subtitle="Document Translator in Go"
 date="\\today"
 keywords=["documents", "go", "pandoc", "wkhtlmtox", "xelatex"]
 abstract="At some point Dotgo should make it easy to write beautiful documents.\nThis will then be it's manual"
-type="md2latex"
+type="latex"
 infile="README.md"
 outfile="readme_pandoc.tex"
 converter="pandoc"

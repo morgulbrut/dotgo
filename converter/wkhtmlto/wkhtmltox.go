@@ -29,7 +29,7 @@ func Pdf(cf config.File, c config.Config) {
 	// Create a new input page from an URL
 
 	var infile string
-	if cf.Type == "md2pdf" && cf.Converter == "wkhtmltopdf" {
+	if cf.Type == "pdf" && cf.Converter == "wkhtmltopdf" {
 		infile = "temp.html"
 	} else {
 		infile = cf.Infile

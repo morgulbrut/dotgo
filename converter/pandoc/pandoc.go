@@ -53,9 +53,9 @@ func addArguments(cf config.File) []string {
 	return arguments
 }
 
-func Beamer(cf config.File, c config.Config) {
+func Beamer(cf config.File) {
 	colorlog.Info("[pandoc]: converting")
-	arguments := []string{"-t", "beamer", cf.Infile, "-o", cf.Outfile}
+	arguments := []string{"-s", "-t", "beamer", cf.Infile, "-o", cf.Outfile}
 	arguments = append(arguments, "--pdf-engine="+cf.PdfEngine)
 	arguments = append(arguments, addArguments(cf)...)
 
@@ -68,9 +68,9 @@ func Beamer(cf config.File, c config.Config) {
 	colorlog.Trace(string(st))
 }
 
-func Revealjs(cf config.File, c config.Config) {
+func Generic(cf config.File) {
 	colorlog.Info("[pandoc]: converting")
-	arguments := []string{"-s", "-t", "revealjs", cf.Infile, "-o", cf.Outfile}
+	arguments := []string{"-s", "-t", cf.Type, cf.Infile, "-o", cf.Outfile}
 	arguments = append(arguments, addArguments(cf)...)
 
 	colorlog.Info("[pandoc]: Arguments: %q", arguments)
@@ -81,22 +81,9 @@ func Revealjs(cf config.File, c config.Config) {
 	}
 }
 
-func LaTeX(cf config.File, c config.Config) {
+func Pdf(cf config.File) {
 	colorlog.Info("[pandoc]: converting")
 	arguments := []string{"-s", cf.Infile, "-o", cf.Outfile}
-	arguments = append(arguments, addArguments(cf)...)
-
-	colorlog.Info("[pandoc]: Arguments: %q", arguments)
-	cmd := exec.Command("pandoc", arguments...)
-	_, err := cmd.Output()
-	if err != nil {
-		colorlog.Fatal(err.Error())
-	}
-}
-
-func Pdf(cf config.File, c config.Config) {
-	colorlog.Info("[pandoc]: converting")
-	arguments := []string{cf.Infile, "-o", cf.Outfile}
 	arguments = append(arguments, "--pdf-engine="+cf.PdfEngine)
 	arguments = append(arguments, addArguments(cf)...)
 	colorlog.Info("[pandoc]: Arguments: %q", arguments)
