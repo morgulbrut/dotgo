@@ -1,10 +1,13 @@
 package main
 
 import (
+	"os"
+
 	"github.com/morgulbrut/colorlog"
-	"github.com/morgulbrut/dotgo/converter"
 
 	"github.com/morgulbrut/color256"
+	"github.com/morgulbrut/dotgo/converter"
+	"github.com/morgulbrut/dotgo/converter/config"
 )
 
 var Version string
@@ -13,9 +16,13 @@ var Build string
 func main() {
 	logo()
 
-	colorlog.SetLogLevel(colorlog.TRACE)
-	config := converter.ReadConfig()
-	converter.Convert(config)
+	if os.Args[1] == "init" {
+		config.Init()
+	} else {
+		colorlog.SetLogLevel(colorlog.TRACE)
+		config := converter.ReadConfig()
+		converter.Convert(config)
+	}
 }
 
 func logo() {
