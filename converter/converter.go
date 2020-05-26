@@ -40,9 +40,9 @@ func Convert(c config.Config) {
 }
 
 // ReadConfig reads the settings.toml file
-func ReadConfig() config.Config {
+func ReadConfig(conffile string) config.Config {
 	var conf config.Config
-	_, err := toml.DecodeFile("settings.toml", &conf)
+	_, err := toml.DecodeFile(conffile, &conf)
 	if err != nil {
 		colorlog.Fatal(err.Error())
 		os.Exit(1)

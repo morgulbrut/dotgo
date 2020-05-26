@@ -1,13 +1,15 @@
 package main
 
 import (
+	"flag"
 	"os"
+
+	"github.com/morgulbrut/dotgo/converter/config"
 
 	"github.com/morgulbrut/colorlog"
 
 	"github.com/morgulbrut/color256"
 	"github.com/morgulbrut/dotgo/converter"
-	"github.com/morgulbrut/dotgo/converter/config"
 )
 
 var Version string
@@ -16,13 +18,16 @@ var Build string
 func main() {
 	logo()
 
-	if os.Args[1] == "init" {
+	configfile := flag.String("c", "settings.toml", "config file")
+	init := flag.Bool("i", false, "generate new settings.toml")
+	flag.Parse()
+	if *init {
 		config.Init()
-	} else {
-		colorlog.SetLogLevel(colorlog.TRACE)
-		config := converter.ReadConfig()
-		converter.Convert(config)
+		os.Exit(0)
 	}
+	colorlog.SetLogLevel(colorlog.TRACE)
+	conf := converter.ReadConfig(*configfile)
+	converter.Convert(conf)
 }
 
 func logo() {
