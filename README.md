@@ -116,6 +116,8 @@ Options for the settings file
 `header`
 : path to a custom header file, will be passed to pandoc (when using **pandoc**).
 
+`replace`
+: a list of strings, multiples of two, where the first gets replaces with the second (when using **pandoc** to make a pdf).
 
 ## Examples
 
