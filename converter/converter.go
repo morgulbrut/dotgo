@@ -13,7 +13,7 @@ import (
 
 const line string = "----------------------------------"
 
-// Convert actually kicks of the conversation of the different files
+// Convert actually kicks off the conversation of the different files
 func Convert(c config.Config) {
 	for _, f := range c.Files {
 		colorlog.Info("Deleting old %s", f.Outfile)
