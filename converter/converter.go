@@ -44,7 +44,9 @@ func ReadConfig(conffile string) config.Config {
 	var conf config.Config
 	_, err := toml.DecodeFile(conffile, &conf)
 	if err != nil {
-		colorlog.Fatal(err.Error())
+		colorlog.Fatal("Config file not found.")
+		colorlog.Fatal("Run dotgo with the -i flag to initalize a new config file.")
+		colorlog.Fatal("Or run dotgo with the -c flag an a path to a config file.")
 		os.Exit(1)
 	}
 
