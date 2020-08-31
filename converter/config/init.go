@@ -20,6 +20,7 @@ outfile="Readme.pdf"
 pdfengine="xelatex" # pdflatex, lualatex, xelatex, latexmk, tectonic, wkhtmltopdf, weasyprint, prince, context, and pdfroff
 converter="pandoc"
 toc=false
+arrows = true # using LaTeX arrows
 numbered=true
 verbose=true
 codestyle="pygments" # pygments, kate, monochrome, espesso, haddock, zenburn, tango
@@ -29,6 +30,14 @@ variables=[
 	"papersize=a4",
 	"lang=de",
 	"mainfont=Calibri.ttf"
+]
+replace= [ # If you want to replace some substrings in your pdf output
+		"<--", "$\\lefttarrow$",
+		"-->", "$\\rightarrow$",
+		"<->", "$\\leftrightarrow$",
+		"<==", "$\\Lefttarrow$",
+		"==>", "$\\Rightarrow$",
+		"<=>", "$\\leftrightarrow$",
 ]`
 
 	color256.PrintGreen("Generating new settings.toml")

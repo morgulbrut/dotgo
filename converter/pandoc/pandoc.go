@@ -1,7 +1,10 @@
 package pandoc
 
 import (
+	"io/ioutil"
+	"os"
 	"os/exec"
+	"strings"
 
 	"github.com/morgulbrut/colorlog"
 	"github.com/morgulbrut/dotgo/converter/config"
@@ -83,7 +86,13 @@ func Generic(cf config.File) {
 
 func Pdf(cf config.File) {
 	colorlog.Info("[pandoc]: converting")
-	arguments := []string{"-s", cf.Infile, "-o", cf.Outfile}
+	infile := cf.Infile
+	if len(cf.Replace) > 0 {
+		colorlog.Info("Replacing arrows")
+		symReplace(cf)
+		infile = "temp.md"
+	}
+	arguments := []string{"-s", infile, "-o", cf.Outfile}
 	arguments = append(arguments, "--pdf-engine="+cf.PdfEngine)
 	arguments = append(arguments, addArguments(cf)...)
 	colorlog.Info("[pandoc]: Arguments: %q", arguments)
@@ -94,4 +103,24 @@ func Pdf(cf config.File) {
 		colorlog.Fatal(err.Error())
 	}
 	colorlog.Trace(string(st))
+	if len(cf.Replace) > 0 {
+		os.Remove("temp.md")
+	}
+}
+
+func symReplace(cf config.File) {
+	input, err := ioutil.ReadFile(cf.Infile)
+	if err != nil {
+		colorlog.Fatal(err.Error())
+	}
+	text := string(input)
+
+	replacer := strings.NewReplacer(cf.Replace...)
+
+	output := replacer.Replace(text)
+
+	err = ioutil.WriteFile("temp.md", []byte(output), 0644)
+	if err != nil {
+		colorlog.Fatal(err.Error())
+	}
 }

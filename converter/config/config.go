@@ -30,4 +30,5 @@ type File struct {
 	Codestyle string
 	Latex     bool
 	Header    string
+	Replace   []string
 }

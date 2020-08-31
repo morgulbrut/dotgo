@@ -44,6 +44,14 @@ variables=[
     "lang=de",
     "mainfont=Calibri.ttf"
 ]
+replace= [
+		"<--", "$\\lefttarrow$",
+		"-->", "$\\rightarrow$",
+		"<->", "$\\leftrightarrow$",
+		"<==", "$\\Lefttarrow$",
+		"==>", "$\\Rightarrow$",
+		"<=>", "$\\leftrightarrow$",
+]
 
 [[files]]
 title="DoTGo"
