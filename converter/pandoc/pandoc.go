@@ -49,13 +49,13 @@ func addArguments(cf config.File) []string {
 		arguments = append(arguments, "-V")
 		arguments = append(arguments, "abstract="+cf.Abstract)
 	}
-	for _, v := range cf.Variables {
-		arguments = append(arguments, "-V")
-		arguments = append(arguments, v)
-	}
 	for _, f := range cf.Filter {
 		arguments = append(arguments, "--filter")
 		arguments = append(arguments, f)
+	}
+	for _, v := range cf.Variables {
+		arguments = append(arguments, "-V")
+		arguments = append(arguments, v)
 	}
 	return arguments
 }
