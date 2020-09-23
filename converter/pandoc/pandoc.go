@@ -53,6 +53,10 @@ func addArguments(cf config.File) []string {
 		arguments = append(arguments, "-V")
 		arguments = append(arguments, v)
 	}
+	for _, f := range cf.Filter {
+		arguments = append(arguments, "--filter")
+		arguments = append(arguments, f)
+	}
 	return arguments
 }
 
@@ -95,7 +99,6 @@ func Pdf(cf config.File) {
 	arguments := []string{"-s", infile, "-o", cf.Outfile}
 	arguments = append(arguments, "--pdf-engine="+cf.PdfEngine)
 	arguments = append(arguments, addArguments(cf)...)
-	arguments = append(arguments, "--filter", "pandoc-xnos")
 	colorlog.Info("[pandoc]: Arguments: %q", arguments)
 	cmd := exec.Command("pandoc", arguments...)
 

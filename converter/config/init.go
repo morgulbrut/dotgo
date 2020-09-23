@@ -20,7 +20,6 @@ outfile="Readme.pdf"
 pdfengine="xelatex" # pdflatex, lualatex, xelatex, latexmk, tectonic, wkhtmltopdf, weasyprint, prince, context, and pdfroff
 converter="pandoc"
 toc=false
-arrows = true # using LaTeX arrows
 numbered=true
 verbose=true
 codestyle="pygments" # pygments, kate, monochrome, espesso, haddock, zenburn, tango
@@ -38,7 +37,11 @@ replace= [ # If you want to replace some substrings in your pdf output
 		"<==", "$\\Lefttarrow$",
 		"==>", "$\\Rightarrow$",
 		"<=>", "$\\leftrightarrow$",
-]`
+]
+filter = [
+	"pandoc-xnos"
+]
+`
 
 	color256.PrintGreen("Generating new settings.toml")
 	ioutil.WriteFile("settings.toml", []byte(template), 0644)

@@ -31,4 +31,5 @@ type File struct {
 	Latex     bool
 	Header    string
 	Replace   []string
+	Filter    []string
 }
