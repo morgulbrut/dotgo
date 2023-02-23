@@ -13,5 +13,5 @@ require (
 	gitlab.com/golang-commonmark/markdown v0.0.0-20191101041056-07f57002fff3
 	gitlab.com/golang-commonmark/mdurl v0.0.0-20180912090424-e5bce34c34f2 // indirect
 	gitlab.com/golang-commonmark/puny v0.0.0-20180912090636-2cd490539afe // indirect
-	golang.org/x/text v0.3.2 // indirect
+	golang.org/x/text v0.3.8 // indirect
 )
